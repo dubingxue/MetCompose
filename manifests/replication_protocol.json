@@ -1,0 +1,64 @@
+{
+  "source": "Original processed common-training pool (not bundled); see manifests and README",
+  "sha256": "e96c832736d250466d13d98f939a08abb1631e99bb1a686c64737df270bad5b7",
+  "folds": 3,
+  "seeds": [
+    41,
+    53,
+    67
+  ],
+  "epochs": 12,
+  "selection": "fixed final epoch; no held-out checkpoint selection",
+  "split": "entire primitive multisets withheld; any-role stereo-free molecule overlap and evidence IDs removed from training",
+  "exclusions": "unsupported primitives reported, excluded only from supported-combination estimand",
+  "modes": [
+    "base",
+    "hard",
+    "full",
+    "no_relation",
+    "no_count"
+  ],
+  "caps": [
+    32,
+    64,
+    128
+  ],
+  "local_actions": 64,
+  "products": 64,
+  "max_edits": 3,
+  "scope": "retrospective cross-validation within historical training pool, not new independent external evidence",
+  "audits": [
+    {
+      "fold": 0,
+      "train": 1022,
+      "held_records": 77,
+      "supported_records": 70,
+      "unsupported_records": 7,
+      "supported_families": 11,
+      "parents": 70,
+      "removed_overlap": 20
+    },
+    {
+      "fold": 1,
+      "train": 1010,
+      "held_records": 76,
+      "supported_records": 19,
+      "unsupported_records": 57,
+      "supported_families": 6,
+      "parents": 19,
+      "removed_overlap": 33
+    },
+    {
+      "fold": 2,
+      "train": 1007,
+      "held_records": 76,
+      "supported_records": 44,
+      "unsupported_records": 32,
+      "supported_families": 8,
+      "parents": 44,
+      "removed_overlap": 36
+    }
+  ],
+  "pair_controls": "unrecorded compatible pairs; not verified biological negatives",
+  "retrieval": "not refitted; previous fold-specific retrieval unchanged"
+}

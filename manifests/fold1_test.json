@@ -1,0 +1,140 @@
+{
+  "fold": 1,
+  "split": "test",
+  "source_sha256": "f69df9e70e3c2e55fbcddefe62b599730f42464eaa24eb22ba54d7bcbd06162c",
+  "records": [
+    {
+      "reaction_id": "adaf26f818d58496be99fb62",
+      "record_sha256": "8b5df611adbe046601a6ce4ea48bc9e929d3f95cd58c5321fdb06d66b35c5338",
+      "evidence_reaction_ids": [
+        "adaf26f818d58496be99fb62"
+      ]
+    },
+    {
+      "reaction_id": "4b9aa9665b6aa8eed2b6cdac",
+      "record_sha256": "cb09cf03d6aad865067307605f0edc346129cdf3d2f5399a883d2fd1e5eb15c1",
+      "evidence_reaction_ids": [
+        "4b9aa9665b6aa8eed2b6cdac"
+      ]
+    },
+    {
+      "reaction_id": "016127d5a05f4c378ef35dad",
+      "record_sha256": "78894dcbb246272fc1d62243c0417db9231c691ff0b9911d9cd4b62b86ecbbca",
+      "evidence_reaction_ids": [
+        "016127d5a05f4c378ef35dad"
+      ]
+    },
+    {
+      "reaction_id": "32b2f6c11cd9048664367830",
+      "record_sha256": "c2b3b26d94d3701656ff6429d17c097d67f05ad8c9a7cebc6487080abe9f5ecf",
+      "evidence_reaction_ids": [
+        "32b2f6c11cd9048664367830"
+      ]
+    },
+    {
+      "reaction_id": "7de445c986be1d73ccbee46b",
+      "record_sha256": "7cf2b242e30f2be92b77eb83de9b026195f0c9ecf3dcf7466db1f0c41c3b2041",
+      "evidence_reaction_ids": [
+        "7de445c986be1d73ccbee46b"
+      ]
+    },
+    {
+      "reaction_id": "cc0edd839384f3203bab53a3",
+      "record_sha256": "35733e3ef84c8a1f40dd0e2047e8bac14ed38748644e1141bb54d4c39be9bcd1",
+      "evidence_reaction_ids": [
+        "cc0edd839384f3203bab53a3"
+      ]
+    },
+    {
+      "reaction_id": "734da82b23c9669bf6da5f42",
+      "record_sha256": "2e46e79cc47cbc43d5c2b62a233a50e499bc25de945f801d7d708dced5c6aa4b",
+      "evidence_reaction_ids": [
+        "734da82b23c9669bf6da5f42"
+      ]
+    },
+    {
+      "reaction_id": "43063a82a92a68bc95bf6553",
+      "record_sha256": "20dc3dcffe2ef38bad02cf23743c1e1b130c91f3a2f07830ec0b54dd8ccdefb4",
+      "evidence_reaction_ids": [
+        "43063a82a92a68bc95bf6553"
+      ]
+    },
+    {
+      "reaction_id": "4e5c79d336eb1e32494560ad",
+      "record_sha256": "18c74b5fc9c1b4596fd977b2f13ad0596b4e069fde7abf35c5e59f6615579b33",
+      "evidence_reaction_ids": [
+        "4e5c79d336eb1e32494560ad"
+      ]
+    },
+    {
+      "reaction_id": "1911e3077035a808583511ee",
+      "record_sha256": "af9704b90357854eb7ea26405bfc745da7ccc753a8cfe34793461775f4eae1cd",
+      "evidence_reaction_ids": [
+        "1911e3077035a808583511ee"
+      ]
+    },
+    {
+      "reaction_id": "aca1057467a3d1bbce95943e",
+      "record_sha256": "f9afa67070b2d22b370d211662877fae0941f7ffe9135759b8ac0a5889aaf424",
+      "evidence_reaction_ids": [
+        "aca1057467a3d1bbce95943e"
+      ]
+    },
+    {
+      "reaction_id": "fbf3cf7521dea894523821db",
+      "record_sha256": "cb4624d1e1ed783c7f8e8d27a3250be348ff0916d0aba8608c8cc525601c275a",
+      "evidence_reaction_ids": [
+        "fbf3cf7521dea894523821db"
+      ]
+    },
+    {
+      "reaction_id": "7ce1d9c7b0a151ec19582629",
+      "record_sha256": "9b17234830295f4daabdbd705cb127a15c1f87320ab074c4913df04c6563f728",
+      "evidence_reaction_ids": [
+        "7ce1d9c7b0a151ec19582629"
+      ]
+    },
+    {
+      "reaction_id": "6756044cc713b282f7ff932f",
+      "record_sha256": "1b43258a3b37a6c1b8dc260d8073ea60a28679ed5f7eb580c76317d57fd94c04",
+      "evidence_reaction_ids": [
+        "6756044cc713b282f7ff932f"
+      ]
+    },
+    {
+      "reaction_id": "bae1ca6f7e692fc29111038e",
+      "record_sha256": "409f633d4165d7cf924473345053538204303093b3e2afdd6690342447852f33",
+      "evidence_reaction_ids": [
+        "bae1ca6f7e692fc29111038e"
+      ]
+    },
+    {
+      "reaction_id": "0778fd5c050dc495bd291952",
+      "record_sha256": "b6c19523dded495274d5f63bba4839b50e2f7d0239c3365eaccdf33536dbfde6",
+      "evidence_reaction_ids": [
+        "0778fd5c050dc495bd291952"
+      ]
+    },
+    {
+      "reaction_id": "d1b2b2da8f1e8ed4750ea07a",
+      "record_sha256": "afeab47236a9bd122b65c6e91f180277ab5dec017af96ad83ad21afd7bc67404",
+      "evidence_reaction_ids": [
+        "d1b2b2da8f1e8ed4750ea07a"
+      ]
+    },
+    {
+      "reaction_id": "699fdea06220491a31d20d7c",
+      "record_sha256": "359b3208722df60b14daba82a0d4f96c3491646ec4861072b49ab09fc1a1c770",
+      "evidence_reaction_ids": [
+        "699fdea06220491a31d20d7c"
+      ]
+    },
+    {
+      "reaction_id": "034428576f80de7882212be3",
+      "record_sha256": "132351507b6118625aeb9d0e27ad918ac5b898b47983c98fd240d8fadef97097",
+      "evidence_reaction_ids": [
+        "034428576f80de7882212be3"
+      ]
+    }
+  ]
+}

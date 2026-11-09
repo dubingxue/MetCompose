@@ -1,0 +1,10 @@
+{
+  "completed_metcompose_fits": 15,
+  "required_metcompose_fits": 15,
+  "missing_metcompose_fits": [],
+  "completed_megan_folds": [
+    0,
+    1,
+    2
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "fold": 0,
+  "seed": 17,
+  "scope": "Internal combination-holdout model, not the external-transfer fit",
+  "neural_checkpoint": "Original stored checkpoint; not retrained for release",
+  "pair_scorer": "Refitted from original training fold using original deterministic procedure",
+  "pair_fit": {
+    "training_rows": 1022,
+    "positive_pairs": 157,
+    "contrast_pairs": 24528,
+    "features": 103,
+    "note": "Unrecorded combinations are contrast labels, not verified biological negatives; encoder and scorer use same training split, no independent calibration claim"
+  }
+}
