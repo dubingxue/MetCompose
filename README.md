@@ -18,7 +18,7 @@ pip install -r requirements.txt
 
 The study uses curated enzymatic reactions and external metabolic reaction records from EnzymeMap, MetXBioDB, GLORYx and Rhea. Frozen train/test identifiers and record hashes are provided in `manifests/`; internal combination-evaluation ranks and aggregate metrics are in `results/`.
 
-Full third-party reaction exports are not included. Obtain upstream data under their respective terms. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for input schema, data requirements and the limits of this initial release.
+Full third-party reaction exports are not included. Obtain upstream data under their respective terms. See [REPRODUCIBILITY.md](REPRODUCIBILITY.md) for the input schema and evaluation data requirements.
 
 # Model and training
 
@@ -53,4 +53,4 @@ The output contains at most 64 unique products and their generating edits. Predi
 python scripts/verify_release.py
 ```
 
-The release prediction fixture was checked against the original implementation: all 64 candidate products and edit programs matched. The verifier checks file hashes and deterministic inference. Archived experiment scripts in `experiments/` require the original data layout.
+The verification script checks file hashes and compares predictions with a stored reference output. All 64 reference products and edit programs were checked against the original implementation. Archived experiment scripts in `experiments/` require the original data layout.

@@ -1,18 +1,37 @@
-# MetCompose
+# Reproducibility
 
-MetCompose prioritises compatible graph-edit combinations for metabolic reaction product prediction.
+## Environment
 
-This repository contains the original flat-token graph-edit model, its separately fitted pair-compatibility scorer, a CPU training/inference entry point, one internal holdout checkpoint, frozen split identifiers and numerical results. It retains the edit-count prior used in the manuscript. It does not contain an end-to-end higher-order neural compatibility model.
-
-## Install
-
-The release was checked in the Python environment recorded in `environment.json`. Create a dedicated Python environment and install:
+The tested environment is recorded in `environment.json`. Install the pinned dependencies with:
 
 ```bash
 python -m pip install -r requirements.txt
 ```
 
-## Predict
+## Input records
+
+Training accepts JSONL records with the following fields:
+
+| Field | Description |
+| --- | --- |
+| `parent` | Canonical substrate SMILES |
+| `product` | Reference product SMILES |
+| `actions` | Reference graph edits |
+| `primitive_program` | Multiset of operation tokens |
+| `reaction_id` | Optional record identifier |
+| `ec3` | Optional EC annotation; defaults to unknown |
+
+Each action has the form `[kind, i, j, z1, z2, old, new]`. `kind` is `B`, `ADD`, `DEL` or `Q`; atom indices refer to the substrate graph. The corresponding operation token is `[kind, z1, z2, old, new]`. Reference actions must reconstruct the product exactly using `chemistry.execute`. Edit extraction is implemented in `chemistry.extract`.
+
+## Training
+
+```bash
+python metcompose.py train --data train.jsonl --output trained_model --seed 17 --epochs 12
+```
+
+The neural objective combines separately averaged positive and negative action losses with edit-count cross entropy weighted by 0.3. Pair compatibility uses 103 symmetric features and a separately fitted, standardised, class-balanced logistic regression model with C=0.1.
+
+## Checkpoint and prediction
 
 ```bash
 python metcompose.py predict \
@@ -21,41 +40,26 @@ python metcompose.py predict \
   --output prediction.json
 ```
 
-The checkpoint is one original internal combination-holdout fit (fold 0, seed 17), not the frozen model used for external-transfer figures. The pair scorer was reconstructed using the original training fold and deterministic fitting procedure. Only load checkpoints you trust: PyTorch and pickle files can execute code when loaded.
+The included neural checkpoint is from internal combination-holdout fold 0, seed 17. Its pair scorer was reconstructed from the same training fold using the original deterministic procedure. External-transfer figures used different fits.
 
-Outputs contain ranked unique product SMILES and the edit programs that generated them. The search considers up to 64 local actions and three edits per program, attempts at most 128 executions and retains at most 64 products. Scores are search priorities, not calibrated probabilities of metabolite formation or therapeutic benefit. EC defaults to the unknown category.
+Prediction considers up to 64 local actions and three edits per program, attempts at most 128 executions and returns at most 64 unique products. Each product is accompanied by its generating edits. Search scores are not calibrated probabilities of metabolite formation. Checkpoints use PyTorch and pickle serialization and should only be loaded from trusted sources.
 
-## Train on prepared records
+## Verification
 
 ```bash
-python metcompose.py train --data train.jsonl --output trained_model --seed 17 --epochs 12
+python scripts/verify_release.py
 ```
 
-Each JSONL record must contain `parent` (canonical substrate SMILES), `product`, `actions`, and `primitive_program`; optional fields include `reaction_id` and `ec3`. Each action is `[kind, i, j, z1, z2, old, new]`, where `kind` is `B`, `ADD`, `DEL` or `Q`, indices refer to the substrate graph, and `z1/z2` are element identifiers. `primitive_program` is the multiset of operation tokens `[kind, z1, z2, old, new]`. Input records must pass exact execution/reconstruction checks before training. See `chemistry.extract` and `chemistry.execute`.
+This checks the SHA-256 file manifest and compares inference with the stored reference output. The reference output was checked against the original implementation: all 64 candidate products and edit programs matched.
 
-The neural objective combines separately averaged positive/negative action softplus terms and count cross entropy weighted by 0.3. Pair compatibility uses 103 symmetric features and standardised class-balanced logistic regression (C=0.1). This classifier is fitted separately, not through the neural training loss.
+## Evaluation files
 
-## Reproduction scope
+- `manifests/`: record identifiers and hashes for the three train/test partitions.
+- `results/`: internal combination-evaluation ranks and aggregate metrics.
+- `experiments/`: original replication and aggregation scripts, which require the historical experiment directory structure and processed records.
 
-- Root Python files: original implementation modules. Use the release entry point above; legacy module `main` functions retain historical experiment paths.
-- `checkpoints/fold0_seed17`: one stored neural checkpoint and reconstructed pair scorer.
-- `manifests`: train/test record identifiers and SHA-256 fingerprints for three historical folds. These are identifiers, not redistributed full reaction datasets.
-- `results`: substrate/seed/control ranks and aggregate internal results underlying the combination analysis.
-- `experiments`: archived original replication/aggregation scripts for provenance. These require the original experiment directory structure and data; they are not standalone release commands.
-- `scripts/verify_release.py`: validates included file hashes, executes inference, and compares ranks on a synthetic chemical input with the original implementation during release testing.
-
-The 133-substrate, three-fold, five-seed internal analysis reports mean Top-10 recall of 9.02% for the full model and 4.66% for hard filtering. Locality controls remain competitive. External benchmark models have unequal training histories; these comparisons are not evidence of matched architectural superiority. The selected chemical case examples are illustrative and do not provide experimental validation.
+The internal evaluation covers 133 substrates, three folds and five seeds. Mean Top-10 recall is 9.02% for MetCompose and 4.66% for hard filtering. Locality controls remain competitive. External comparisons use models with different training histories.
 
 ## Data access
 
-Full EnzymeMap, MetXBioDB, GLORYx and Rhea reaction exports are not bundled in this release. Obtain upstream datasets under their respective terms. The frozen manifests identify the processed records used here. Reconstructing an entire published evaluation additionally requires the original processed reaction records, provenance reconciliation and external baseline environments. This initial code release must not be described as an independently reproduced, complete benchmark archive.
-
-## Authors
-
-Bingxue Du, Bei Zhu, Zhenyi Wu, Pengzhen Hu, Hui Yu and Jian-Yu Shi.
-
-Correspondence: huiyu@nwpu.edu.cn; jianyushi@nwpu.edu.cn.
-
-## Citation and licensing
-
-The manuscript is in preparation; no publication DOI is assigned here. No third-party baseline source code or proprietary dataset export is included. A software reuse licence has not yet been selected; public availability alone does not grant an open-source licence.
+Full EnzymeMap, MetXBioDB, GLORYx and Rhea exports are not included. Obtain these datasets under their respective terms. The manifests identify processed records but do not replace the reaction tables. Reproducing every reported evaluation also requires those tables, provenance reconciliation and the external baseline environments.
