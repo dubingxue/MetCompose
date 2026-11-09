@@ -54,18 +54,3 @@ python scripts/verify_release.py
 ```
 
 The release prediction fixture was checked against the original implementation: all 64 candidate products and edit programs matched. The verifier checks file hashes and deterministic inference. Archived experiment scripts in `experiments/` require the original data layout.
-
-# Acknowledgements
-
-This study was supported by the National Natural Science Foundation of China (Grant Nos. 62502385 and 62372375) and the Beijing Natural Science Foundation–Chaoyang Innovation Joint Fund (Grant No. L259021).
-
-# References
-
-Resource publications and comparative methods are documented in the accompanying manuscript. This manuscript is in preparation; no publication DOI is assigned. The README organisation follows our [CMMS-GCL repository](https://github.com/dubingxue/CMMS-GCL); MetCompose is a separate model for product prediction, not metabolic stability prediction.
-
-# Contact
-
-Hui Yu: huiyu@nwpu.edu.cn  
-Jian-Yu Shi: jianyushi@nwpu.edu.cn
-
-A software reuse licence has not yet been selected. Public availability does not itself grant an open-source licence.
